@@ -1,0 +1,42 @@
+{
+  "groups": [
+    {
+      "name": "wechat",
+      "type": "com.imooc.config.WechatAccountConfig",
+      "sourceType": "com.imooc.config.WechatAccountConfig"
+    }
+  ],
+  "properties": [
+    {
+      "name": "wechat.key-path",
+      "type": "java.lang.String",
+      "sourceType": "com.imooc.config.WechatAccountConfig"
+    },
+    {
+      "name": "wechat.mch-id",
+      "type": "java.lang.String",
+      "sourceType": "com.imooc.config.WechatAccountConfig"
+    },
+    {
+      "name": "wechat.mch-key",
+      "type": "java.lang.String",
+      "sourceType": "com.imooc.config.WechatAccountConfig"
+    },
+    {
+      "name": "wechat.mp-app-id",
+      "type": "java.lang.String",
+      "sourceType": "com.imooc.config.WechatAccountConfig"
+    },
+    {
+      "name": "wechat.mp-app-secret",
+      "type": "java.lang.String",
+      "sourceType": "com.imooc.config.WechatAccountConfig"
+    },
+    {
+      "name": "wechat.notify-url",
+      "type": "java.lang.String",
+      "sourceType": "com.imooc.config.WechatAccountConfig"
+    }
+  ],
+  "hints": []
+}
