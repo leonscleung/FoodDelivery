@@ -25,7 +25,7 @@ public class ProductInfo {
     // URL
     private String productIcon;
     // 0->正常, 1->下架
-    private Integer productStatus;
+    private Integer productStatus = ProductStatusEnum.UP.getCode();
     private Integer categoryType;
     private Date createTime;
     private Date updateTime;

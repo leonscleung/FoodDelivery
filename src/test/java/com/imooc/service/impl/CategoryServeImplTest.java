@@ -28,7 +28,7 @@ public class CategoryServeImplTest {
 
     @Test
     public void findALl() {
-        List<ProductCategory> productCategoryList = categoryService.findALl();
+        List<ProductCategory> productCategoryList = categoryService.findAll();
         Assert.assertNotEquals(0, productCategoryList.size());
     }
 

@@ -13,10 +13,12 @@ import java.util.Date;
 @Data
 public class ProductCategory {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer categoryId;
     private String categoryName;
     private Integer categoryType;
+    private Date createTime;
+    private Date updateTime;
 
     public ProductCategory() {
     }
@@ -25,4 +27,5 @@ public class ProductCategory {
         this.categoryName = categoryName;
         this.categoryType = categoryType;
     }
+
 }
