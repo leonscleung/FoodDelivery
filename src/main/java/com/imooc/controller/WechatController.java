@@ -24,13 +24,16 @@ public class WechatController {
     @Autowired
     private WxMpService wxMpService;
 
+    @Autowired
+    private WxMpService wxOpenService;
+
     @GetMapping("/authorize")
-    public String authorize(@RequestParam("returnUrl") String returnUrl){
+    public String authorize(@RequestParam("returnUrl") String returnUrl) {
         //1. 配置 2. 调用方法
         String url = "http://kkllsc.natapp1.cc/product2/wechat/userInfo";
         try {
             URLEncoder.encode(returnUrl, "UTF-8");
-        }catch (UnsupportedEncodingException e){
+        } catch (UnsupportedEncodingException e) {
             log.error("[微信网页授权] {}", e);
             throw new ProductException(ResultEnum.WECHAT_MP_ERROR.getCode(), ResultEnum.WECHAT_MP_ERROR.getMessage());
         }
@@ -40,11 +43,11 @@ public class WechatController {
 
     @GetMapping("/userInfo")
     public String userInfo(@RequestParam("code") String code,
-                         @RequestParam("state") String returnUrl) {
+                           @RequestParam("state") String returnUrl) {
         WxOAuth2AccessToken wxMpOAuth2AccessToken = new WxOAuth2AccessToken();
-        try{
+        try {
             wxMpOAuth2AccessToken = wxMpService.getOAuth2Service().getAccessToken(code);
-        } catch (WxErrorException e){
+        } catch (WxErrorException e) {
             log.error("[微信网页授权] {}", e);
             throw new ProductException(ResultEnum.WECHAT_MP_ERROR.getCode(), e.getError().getErrorMsg());
         }
@@ -52,5 +55,32 @@ public class WechatController {
         return "redirect:" + returnUrl + "?openid=" + openId;
     }
 
+    @GetMapping("/QRAuthorize")
+    public String QRAuthorize(@RequestParam("returnUrl") String returnUrl) {
+        String url = "http://kkllsc.natapp1.cc/product2/wechat/QRUserInfo";
+        try {
+            URLEncoder.encode(returnUrl, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            log.error("[微信网页授权] {}", e);
+            throw new ProductException(ResultEnum.WECHAT_MP_ERROR.getCode(), ResultEnum.WECHAT_MP_ERROR.getMessage());
+        }
+        String redirectUrl = wxOpenService.buildQrConnectUrl(url, WxConsts.QrConnectScope.SNSAPI_LOGIN, returnUrl);
+        return "redirect" + redirectUrl;
+    }
+
+    @GetMapping("/QRUserInfo")
+    public String QRUserInfo(@RequestParam("code") String code,
+                             @RequestParam("state") String returnUrl) {
+        WxOAuth2AccessToken wxMpOAuth2AccessToken = new WxOAuth2AccessToken();
+        try {
+            wxMpOAuth2AccessToken = wxOpenService.getOAuth2Service().getAccessToken(code);
+        } catch (WxErrorException e) {
+            log.error("[微信网页授权] {}", e);
+            throw new ProductException(ResultEnum.WECHAT_MP_ERROR.getCode(), e.getError().getErrorMsg());
+        }
+        log.info("wxOAuth2AccessToken={}", wxMpOAuth2AccessToken);
+        String openId = wxMpOAuth2AccessToken.getOpenId();
+            return "redirect:" + returnUrl + "?openid=" +openId;
+    }
 }
 

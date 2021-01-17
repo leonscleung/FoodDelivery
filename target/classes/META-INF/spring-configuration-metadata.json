@@ -36,6 +36,16 @@
       "name": "wechat.notify-url",
       "type": "java.lang.String",
       "sourceType": "com.imooc.config.WechatAccountConfig"
+    },
+    {
+      "name": "wechat.open-app-id",
+      "type": "java.lang.String",
+      "sourceType": "com.imooc.config.WechatAccountConfig"
+    },
+    {
+      "name": "wechat.open-app-secret",
+      "type": "java.lang.String",
+      "sourceType": "com.imooc.config.WechatAccountConfig"
     }
   ],
   "hints": []
