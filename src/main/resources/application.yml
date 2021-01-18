@@ -8,6 +8,9 @@ spring:
     show-sql: true
   jackson:
     default-property-inclusion: non_null
+  redis:
+    host: 192.168.0.102
+    port: 6379
 
 server:
   servlet:
@@ -22,3 +25,9 @@ wechat:
   mchKey: 098F6BCD4621D373CADE4E832627B4F6
   keyPath: C:/Users/leons/Desktop/job/iMooc1/coding-117/doc/h5.p12
   notifyUrl: http://kkllsc.natapp1.cc/product2/pay/notify
+
+projecturl:
+  wechatMapAuthorize: http://kkllsc.natapp1.cc
+  wechatOpenAuthorize: http://sell.springboot.cn
+  sell: http://kkllsc.natapp1.cc
+

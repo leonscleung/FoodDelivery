@@ -1,5 +1,6 @@
 package com.imooc.controller;
 
+import com.imooc.config.ProjectUrlConfig;
 import com.imooc.enums.ResultEnum;
 import com.imooc.exception.ProductException;
 import lombok.extern.slf4j.Slf4j;
@@ -27,12 +28,15 @@ public class WechatController {
     @Autowired
     private WxMpService wxOpenService;
 
+    @Autowired
+    private ProjectUrlConfig projectUrlConfig;
+
     @GetMapping("/authorize")
     public String authorize(@RequestParam("returnUrl") String returnUrl) {
         //1. 配置 2. 调用方法
-        String url = "http://kkllsc.natapp1.cc/product2/wechat/userInfo";
+        String url = projectUrlConfig.getWechatMpAuthorize() + "/product2/wechat/userInfo";
         try {
-            URLEncoder.encode(returnUrl, "UTF-8");
+            returnUrl = URLEncoder.encode(returnUrl, "UTF-8");
         } catch (UnsupportedEncodingException e) {
             log.error("[微信网页授权] {}", e);
             throw new ProductException(ResultEnum.WECHAT_MP_ERROR.getCode(), ResultEnum.WECHAT_MP_ERROR.getMessage());
@@ -57,9 +61,9 @@ public class WechatController {
 
     @GetMapping("/QRAuthorize")
     public String QRAuthorize(@RequestParam("returnUrl") String returnUrl) {
-        String url = "http://kkllsc.natapp1.cc/product2/wechat/QRUserInfo";
+        String url = projectUrlConfig.getWechatOpenAuthorize() + "/product2/wechat/QRUserInfo";
         try {
-            URLEncoder.encode(returnUrl, "UTF-8");
+            returnUrl = URLEncoder.encode(returnUrl, "UTF-8");
         } catch (UnsupportedEncodingException e) {
             log.error("[微信网页授权] {}", e);
             throw new ProductException(ResultEnum.WECHAT_MP_ERROR.getCode(), ResultEnum.WECHAT_MP_ERROR.getMessage());
@@ -74,13 +78,16 @@ public class WechatController {
         WxOAuth2AccessToken wxMpOAuth2AccessToken = new WxOAuth2AccessToken();
         try {
             wxMpOAuth2AccessToken = wxOpenService.getOAuth2Service().getAccessToken(code);
+            log.info("test", code);
         } catch (WxErrorException e) {
             log.error("[微信网页授权] {}", e);
             throw new ProductException(ResultEnum.WECHAT_MP_ERROR.getCode(), e.getError().getErrorMsg());
         }
         log.info("wxOAuth2AccessToken={}", wxMpOAuth2AccessToken);
-        String openId = wxMpOAuth2AccessToken.getOpenId();
-            return "redirect:" + returnUrl + "?openid=" +openId;
+//        String openId = wxMpOAuth2AccessToken.getOpenId();
+        String openId = "abc";
+        //        String returnUrl = "http://kkllsc.natapp1.cc/product2/seller/login";
+        return "redirect:" + returnUrl + "?openid=" +openId;
     }
 }
 

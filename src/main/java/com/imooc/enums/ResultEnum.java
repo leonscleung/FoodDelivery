@@ -20,7 +20,9 @@ public enum ResultEnum {
     WXPAY_NOTIFY_PRICE_VERIFY_ERROR(415, "异步支付金额校验失败"),
     ORDER_CANCELLED(416,"订单取消成功"),
     ORDER_FINISHED(417, "订单完结成功"),
-    PRODUCT_STATUS_ERROR(418, "商品状态不正确")
+    PRODUCT_STATUS_ERROR(418, "商品状态不正确"),
+    LOGIN_FAIL(419,"登陆失败"),
+    LOGOUT_SUCCESS(420,"登出成功")
     ;
     private Integer code;
     private String message;
