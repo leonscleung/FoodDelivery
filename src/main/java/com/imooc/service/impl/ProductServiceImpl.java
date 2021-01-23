@@ -8,6 +8,9 @@ import com.imooc.exception.ProductException;
 import com.imooc.repository.ProductInfoRepository;
 import com.imooc.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -16,18 +19,21 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
+@CacheConfig(cacheNames = "product")
 public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private ProductInfoRepository repository;
 
     @Override
+//    @Cacheable(key = "123")
+    //若key为空则默认调用方法里的参数值
     public ProductInfo findOne(String productId) {
         return repository.findById(productId).orElse(null);
     }
 
     @Override
-    public List<ProductInfo> findUpALl() {
+    public List<ProductInfo> findUpAll() {
         return repository.findByProductStatus(ProductStatusEnum.UP.getCode());
     }
 
@@ -37,6 +43,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+//    @CachePut(key = "123")
     public ProductInfo save(ProductInfo productInfo) {
         return repository.save(productInfo);
     }

@@ -66,6 +66,11 @@
       "name": "wechat.open-app-secret",
       "type": "java.lang.String",
       "sourceType": "com.imooc.config.WechatAccountConfig"
+    },
+    {
+      "name": "wechat.template-id",
+      "type": "java.util.Map<java.lang.String,java.lang.String>",
+      "sourceType": "com.imooc.config.WechatAccountConfig"
     }
   ],
   "hints": []

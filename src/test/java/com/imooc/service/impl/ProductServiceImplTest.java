@@ -30,8 +30,8 @@ public class ProductServiceImplTest {
     }
 
     @Test
-    public void findUpALl() {
-        List<ProductInfo> productInfoList = productService.findUpALl();
+    public void findUpAll() {
+        List<ProductInfo> productInfoList = productService.findUpAll();
         Assert.assertNotEquals(0, productInfoList.size());
     }
 

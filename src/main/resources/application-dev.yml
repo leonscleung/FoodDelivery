@@ -1,0 +1,45 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://192.168.0.102:3306/product?characterEncoding=utf-8&useSSL=false
+  jpa:
+    show-sql: true
+  jackson:
+    default-property-inclusion: non_null
+  redis:
+    host: 192.168.0.102
+    port: 6379
+
+server:
+  servlet:
+    context-path: /product2
+
+wechat:
+#  借用账号(微信支付):
+#  mpAppId: wxd898fcb01713c658
+#  mpAppSecret: 29d8a650db3/1472aa87800e3b0d739f2
+#  测试账号(消息推送):
+  mpAppId: wx78cde4e8b31d7964
+  mpAppSecret: 04fdaf8cf9cefe9a342cd5588e6426dc
+  openAppId: wx6ad144e54af67d87
+  openAppSecret: 91a2ff6d38a2bbccfb7e9f9079108e2e
+  mchId: 1483469312
+  mchKey: 098F6BCD4621D373CADE4E832627B4F6
+  keyPath: C:/Users/leons/Desktop/job/iMooc1/coding-117/doc/h5.p12
+  notifyUrl: http://kkllsc.natapp1.cc/product2/pay/notify
+  templateId:
+    orderStatus: vna9zY7OsTkYYahw7FIqGLIxa2AmT4_nIRQ2zDZglBM
+
+projecturl:
+  wechatMapAuthorize: http://kkllsc.natapp1.cc
+  wechatOpenAuthorize: http://sell.springboot.cn
+  sell: http://kkllsc.natapp1.cc
+
+logging:
+  level:
+    com.imooc.dataobject.mapper: trace
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml

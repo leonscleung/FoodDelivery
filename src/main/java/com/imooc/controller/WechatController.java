@@ -59,9 +59,9 @@ public class WechatController {
         return "redirect:" + returnUrl + "?openid=" + openId;
     }
 
-    @GetMapping("/QRAuthorize")
-    public String QRAuthorize(@RequestParam("returnUrl") String returnUrl) {
-        String url = projectUrlConfig.getWechatOpenAuthorize() + "/product2/wechat/QRUserInfo";
+    @GetMapping("/qrAuthorize")
+    public String qrAuthorize(@RequestParam("returnUrl") String returnUrl) {
+        String url = projectUrlConfig.getWechatOpenAuthorize() + "/sell/wechat/qrUserInfo";
         try {
             returnUrl = URLEncoder.encode(returnUrl, "UTF-8");
         } catch (UnsupportedEncodingException e) {
@@ -69,11 +69,11 @@ public class WechatController {
             throw new ProductException(ResultEnum.WECHAT_MP_ERROR.getCode(), ResultEnum.WECHAT_MP_ERROR.getMessage());
         }
         String redirectUrl = wxOpenService.buildQrConnectUrl(url, WxConsts.QrConnectScope.SNSAPI_LOGIN, returnUrl);
-        return "redirect" + redirectUrl;
+        return "redirect:" + redirectUrl;
     }
 
-    @GetMapping("/QRUserInfo")
-    public String QRUserInfo(@RequestParam("code") String code,
+    @GetMapping("/qrUserInfo")
+    public String qrUserInfo(@RequestParam("code") String code,
                              @RequestParam("state") String returnUrl) {
         WxOAuth2AccessToken wxMpOAuth2AccessToken = new WxOAuth2AccessToken();
         try {

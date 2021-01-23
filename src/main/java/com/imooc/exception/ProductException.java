@@ -1,7 +1,9 @@
 package com.imooc.exception;
 
 import com.imooc.enums.ResultEnum;
+import lombok.Getter;
 
+@Getter
 public class ProductException extends RuntimeException{
     private Integer code;
 

@@ -11,7 +11,7 @@ import java.util.List;
 public interface ProductService {
     ProductInfo findOne(String productId);
     // 查询上架商品列表
-    List<ProductInfo> findUpALl();
+    List<ProductInfo> findUpAll();
     Page<ProductInfo> findAll(Pageable pageable);
     ProductInfo save(ProductInfo productInfo);
     //加库存
