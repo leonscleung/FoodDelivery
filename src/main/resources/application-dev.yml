@@ -26,14 +26,14 @@ wechat:
   openAppId: wx6ad144e54af67d87
   openAppSecret: 91a2ff6d38a2bbccfb7e9f9079108e2e
   mchId: 1483469312
-  mchKey: 098F6BCD4621D373CADE4E832627B4F6
-  keyPath: C:/Users/leons/Desktop/job/iMooc1/coding-117/doc/h5.p12
+  mchKey: 7mdApPMfXddfWWbbP4DUaVYm2wjyh3v3
+  keyPath: C:/Users/leons/Desktop/job/FoodDelivery/FoodDelivery/doc/h5.p12
   notifyUrl: http://kkllsc.natapp1.cc/product2/pay/notify
   templateId:
     orderStatus: vna9zY7OsTkYYahw7FIqGLIxa2AmT4_nIRQ2zDZglBM
 
 projecturl:
-  wechatMapAuthorize: http://kkllsc.natapp1.cc
+  wechatMpAuthorize: http://kkllsc.natapp1.cc
   wechatOpenAuthorize: http://sell.springboot.cn
   sell: http://kkllsc.natapp1.cc
 

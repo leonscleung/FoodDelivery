@@ -26,7 +26,7 @@ public class ProductServiceImpl implements ProductService {
     private ProductInfoRepository repository;
 
     @Override
-//    @Cacheable(key = "123")
+    @Cacheable(key = "124")
     //若key为空则默认调用方法里的参数值
     public ProductInfo findOne(String productId) {
         return repository.findById(productId).orElse(null);
@@ -43,7 +43,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-//    @CachePut(key = "123")
+    @CachePut(key = "124")
     public ProductInfo save(ProductInfo productInfo) {
         return repository.save(productInfo);
     }

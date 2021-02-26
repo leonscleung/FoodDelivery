@@ -95,9 +95,9 @@ public class SellerProductController {
 
     @PostMapping("/save")
     //相对cacheable, 每次都会执行然后把结果写入Redis
-//    @CachePut(cacheNames = "product", key = "123")
+    // @CachePut(cacheNames = "product", key = "123")
     // 清除缓存
-    @CacheEvict (cacheNames = "product", key = "123")
+    @CacheEvict(cacheNames = "product", key = "124")
     public ModelAndView save(@Valid ProductForm form,
                              BindingResult bindingResult,
                              Map<String, Object> map){
